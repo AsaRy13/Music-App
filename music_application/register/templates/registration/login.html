@@ -1,0 +1,12 @@
+{% extends "music_app/base.html" %}
+
+{% block title %}Login{% endblock %}
+
+{% block content %}
+<form method="POST">
+    {% csrf_token %}
+    {{form}}
+    <p>Don't have an account? Create one <a href="/register">here</a>!</p>
+    <button type="submit">Login</button>
+</form>
+{% endblock %}

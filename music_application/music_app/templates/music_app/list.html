@@ -1,0 +1,19 @@
+{% extends "music_app/base.html" %}
+
+{% block title %}Playlist{% endblock %}
+
+{% block content %}
+    {% if user.is_authenticated %}
+        <h1>{{ ls.name }}</h1>
+        <ul>
+            {% for item in ls.item_set.all %}
+                <li><a href="{{item.file.url}}">{{ item.text }}</a></li>
+            {% empty %}
+                <li>No songs yet.</li>
+            {% endfor %}
+        </ul>
+        <a href="/home/{{ls.id}}/create_song">+ Create Song</a>
+    {% else %}
+        <p>Please login <a href="/login">here</a></p>
+    {% endif %}
+{% endblock %}

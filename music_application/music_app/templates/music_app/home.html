@@ -1,0 +1,12 @@
+{% extends "music_app/base.html" %}
+
+{% block title %}Home{% endblock %}
+
+{% if user.is_authenticated %}
+    {% block content %}
+        <h1>Home</h1>
+        <a href="/view">View playlists</a>
+    {% endblock %}
+{% else %}
+    <p>Please login <a href="/login">here</a></p>
+{% endif %}

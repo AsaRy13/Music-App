@@ -1,0 +1,17 @@
+{% extends 'music_app/base.html' %}
+
+{% block title %}Create Playlist{% endblock %}
+
+
+{% if user.is_authenticated %}
+    {% block content %}
+        <h1>Create Playlist</h1>
+        <form method="post" action="/create_playlist/">
+            {% csrf_token %}
+            {{form.as_p}}
+            <button type="submit" name="save">Create Playlist</button>
+        </form>
+    {% endblock %}
+{% else %}
+    <p>Please login <a href="/login">here</a></p>
+{% endif %}

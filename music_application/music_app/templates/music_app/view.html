@@ -1,0 +1,19 @@
+{% extends "music_app/base.html" %}
+
+{% block title %}Playlists{% endblock %}
+
+{% if user.is_authenticated %}
+    {% block content %}
+    <h1>Playlists</h1>
+        <ul>
+        {% for ml in user.musiclist.all %}
+            <li><a href="/home/{{ml.id}}">{{ml.name}}</a> <a href="/remove_playlist/{{ml.id}}">[remove]</a></li>
+        {% empty %}
+            <li>No playlist yet.</li>
+        {% endfor %}
+        </ul>
+    <a href="/create_playlist">+ Create Playlist</a>
+    {% endblock %}
+{% else %}
+    <p>Please login <a href="/login">here</a></p>
+{% endif %}
